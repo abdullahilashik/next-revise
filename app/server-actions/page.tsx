@@ -1,7 +1,7 @@
 import ProductCreateForm from '@/components/products/product-create-form'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import React from 'react'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@/prisma/generated/client';
 
 const prisma = new PrismaClient();
 

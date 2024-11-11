@@ -2,7 +2,7 @@
 
 import { ProductSchema } from '@/schema/product-schema';
 import {z} from 'zod';
-import {PrismaClient} from '@prisma/client';
+import { PrismaClient } from '@/prisma/generated/client';
 import { revalidatePath } from 'next/cache';
 
 const prisma = new PrismaClient();
