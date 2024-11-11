@@ -24,7 +24,7 @@ export async function productCreateAction(formData : z.infer<typeof ProductSchem
             }, 3000);
         })
         
-    }catch(error: any){
+    }catch(error){
         console.log('Error in server action: ', error);
     }
 }
