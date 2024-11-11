@@ -3,6 +3,7 @@
 import { ProductSchema } from '@/schema/product-schema';
 import {z} from 'zod';
 import {PrismaClient} from '@prisma/client';
+import { revalidatePath } from 'next/cache';
 
 const prisma = new PrismaClient();
 
@@ -18,6 +19,7 @@ export async function productCreateAction(formData : z.infer<typeof ProductSchem
                         description: parsed?.data?.description || ''                
                     }
                 });
+                revalidatePath('/server-actions','page');
                 return resolve(true);
             }, 3000);
         })
