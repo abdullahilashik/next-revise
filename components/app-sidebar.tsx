@@ -29,7 +29,7 @@ const items = [
     },
     {
       title: "Redux",
-      url: "/redux",
+      url: "/redux-page",
       icon: Calendar,
     },
     {

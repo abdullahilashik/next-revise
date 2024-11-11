@@ -6,7 +6,11 @@ import { PrismaClient } from '@/prisma/generated/client';
 const prisma = new PrismaClient();
 
 const ServerActionPage =  async () => {
-    const products = await prisma.product.findMany();
+    const products = await prisma.product.findMany({
+        orderBy: {
+            id: 'desc'
+        }
+    });
   return (
     <section>
         <div className="container">
