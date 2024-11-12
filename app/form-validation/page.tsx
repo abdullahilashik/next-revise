@@ -338,6 +338,25 @@ const FormValidationPage = () => {
                         />
                     )
                   }
+                  {/* image validation */}
+                  <div className="mt-3">
+                    <FormItem>
+                        <FormLabel>Profile Picture Uplaod</FormLabel>
+                        <Controller 
+                            control={form.control}
+                            name="profileImage"
+                            render={({field})=>(
+                                <Input type="file" 
+                                        placeholder="Upload your profile image < 5MB" 
+                                        onChange={(e)=> field.onChange(e.target.files?.[0] || null)} />
+                            )}
+                        />
+                        {
+                            form.formState.errors.profileImage && 
+                            <span className="text-red-600 font-light text-[14px]">{form.formState.errors.profileImage.message}</span>
+                        }
+                    </FormItem>
+                  </div>
                   {/* submit button */}
                   <Button
                     variant={"default"}

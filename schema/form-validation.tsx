@@ -1,5 +1,8 @@
 import {z} from 'zod';
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif"];
+
 export const FormValidationSchema = z.object({
     firstName: z.string({required_error: 'First name is required'}).min(2, {message: 'At least 2 character is required'}),
     lastName: z.string({required_error: 'Last name is required'}).min(2, {message: 'At least provide 2 characters'}),
@@ -18,6 +21,13 @@ export const FormValidationSchema = z.object({
     startDate: z.date({required_error: 'When did you started?'}), // new Date(),
     subscribe: z.boolean().default(false), //false,
     hasReferral: z.boolean().default(false),
-    referral: z.string().min(5, {message: 'At least 1 character is required'}).url({message: 'Not a valid url'})
+    referral: z.string().min(5, {message: 'At least 1 character is required'}).url({message: 'Not a valid url'}),
+    profileImage: z.instanceof(File)
+        .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file.type), {
+            message: "Only JPEG, PNG, and GIF files are accepted",
+        })
+        .refine((file) => file.size <= MAX_FILE_SIZE, {
+            message: "Image must be less than 5MB",
+        }),
 
 })
