@@ -6,7 +6,7 @@ import { CloudUpload, X } from "lucide-react";
 import { getSignature } from "@/actions/actions";
 import Image from "next/image";
 
-const Dropzone = ({ className }: { className: string }) => {
+const Dropzone = ({ className, setFetchAgain }: { className: string, setFetchAgain : any }) => {
   const [files, setFiles] = useState<any>([]);
   const [rejected, setRejected] = useState<any>([]);
 
@@ -79,6 +79,7 @@ const Dropzone = ({ className }: { className: string }) => {
       body: formData,
     }).then((res) => res.json());
     console.log('Data: ', data);    
+    setFetchAgain(true);
 
     // version, signature, public_id
   }
