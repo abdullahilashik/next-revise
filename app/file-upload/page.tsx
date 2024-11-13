@@ -115,9 +115,9 @@ const FileUploadPage = () => {
         </div>
         <div className="mt-3">
           <div className="grid grid-cols-5">
-            {images.map((image) => (
+            {images.map((image : any) => (
               <img
-                key={image.public_id}
+                key={image?.public_id}
                 src={image.url}
                 alt="Cloudinary image"
                 width={200}
