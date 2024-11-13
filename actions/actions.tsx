@@ -51,17 +51,21 @@ export async function getSignature() {
 
   const signature = cloudinary.utils.api_sign_request(
     { timestamp, folder: 'next' },
-    cloudinaryConfig.api_secret
+    cloudinaryConfig?.api_secret || ''
   )
 
   return { timestamp, signature }
 }
 
-export async function saveToDatabase({ public_id, version, signature }) {
+export async function saveToDatabase({ public_id , version , signature } : {
+    public_id : string,
+    version: string,
+    signature: string
+}) {
   // verify the data
   const expectedSignature = cloudinary.utils.api_sign_request(
     { public_id, version },
-    cloudinaryConfig.api_secret
+    cloudinaryConfig.api_secret || ''
   )
 
   if (expectedSignature === signature) {
