@@ -1,11 +1,11 @@
 import React from 'react'
 
-const ParallalInterceptLayout = ({children, analytics, dashboard, auth} : 
+const ParallalInterceptLayout = ({children, analytics, dashboard, user} : 
     {
         children: React.ReactNode,
         analytics : React.ReactNode, 
         dashboard: React.ReactNode,
-        auth: React.ReactNode
+        user: React.ReactNode
     }) => {
   return (
     <section>
@@ -16,7 +16,7 @@ const ParallalInterceptLayout = ({children, analytics, dashboard, auth} :
                 <div className="grid grid-cols-2 gap-8">
                     {analytics}
                     {dashboard}
-                    {auth}
+                    {user}
                 </div>
             </div>
         </div>
