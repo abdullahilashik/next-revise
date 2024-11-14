@@ -36,7 +36,7 @@ const SignUpPage = () => {
                 </CardContent>
                 <CardFooter className='flex flex-col items-center justify-center'>
                     <p>Already have an account?</p>
-                    <Link href={'/auth/signin'} className='underline'>Login Now</Link>
+                    <Link href={'/auth/login'} className='underline'>Login Now</Link>
                 </CardFooter>
             </Card>
         </div>

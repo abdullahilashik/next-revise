@@ -36,7 +36,7 @@ const SignInPage = async () => {
                 </CardContent>
                 <CardFooter className='flex flex-col items-center justify-center'>
                     <p>Don't have an account?</p>
-                    <Link href={'/auth/signup'} className='underline'>Create account</Link>
+                    <Link href={'/auth/register'} className='underline'>Create account</Link>
                 </CardFooter>
             </Card>
         </div>

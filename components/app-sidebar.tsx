@@ -47,6 +47,10 @@ const items = [
         url: "/auth",
         icon: Settings,
     },
+    {
+      title: 'Parallal Route',
+      url: '/parallal'
+    }
   ];
 
     return (

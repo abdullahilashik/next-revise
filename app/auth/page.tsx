@@ -19,8 +19,8 @@ const AuthPage = async () => {
             {
                 !session && (
                     <div className="mt-3 flex gap-4">
-                        <Link className={buttonVariants({'variant': 'default'})} href={'/auth/signin'}>Sign In</Link>
-                        <Link className={buttonVariants({'variant': 'secondary'})} href={'/auth/signup'}>Sign Up</Link>
+                        <Link className={buttonVariants({'variant': 'default'})} href={'/auth/login'}>Sign In</Link>
+                        <Link className={buttonVariants({'variant': 'secondary'})} href={'/auth/register'}>Sign Up</Link>
                     </div>
                 )
             }
