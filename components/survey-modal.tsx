@@ -3,6 +3,7 @@
 import React from 'react'
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from './ui/dialog';
 import { useRouter } from 'next/navigation';
+import SurveyForm from './survey/survey-form';
 
 const SurveyModal = () => {
     const router = useRouter();
@@ -15,6 +16,9 @@ const SurveyModal = () => {
             <DialogTitle></DialogTitle>
             <DialogContent>
                 <h1>Survey</h1>
+                <div className="mt-3">
+                    <SurveyForm />
+                </div>
             </DialogContent>
         </DialogOverlay>
     </Dialog>
