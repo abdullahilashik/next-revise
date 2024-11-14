@@ -49,7 +49,11 @@ const items = [
     },
     {
       title: 'Parallal Route',
-      url: '/parallal'
+      url: '/parallal'    
+    },
+    {
+      title: 'Intercepted + Parallal',
+      url: '/survey'
     }
   ];
 
