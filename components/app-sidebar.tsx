@@ -53,7 +53,11 @@ const items = [
     },
     {
       title: 'Intercepted + Parallal',
-      url: '/survey'
+      url: '/survey'    
+    },
+    {
+      title: 'Use Context',
+      url: '/app-context'
     }
   ];
 
