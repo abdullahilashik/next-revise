@@ -1,11 +1,11 @@
 "use client"
 
-import ChildLevel1 from '@/components/app-context/child-level-1';
-import ParentComp from '@/components/app-context/parent';
 import { Button } from '@/components/ui/button';
-import React, { createContext, useState } from 'react'
+import { Card, CardContent } from '@/components/ui/card';
+import React, { createContext, useContext, useState } from 'react'
+import { twMerge } from 'tailwind-merge';
 
-export const ThemeContext = createContext('');
+const ThemeContext = createContext('');
 
 const AppContext = () => {
     const [theme, setTheme] = useState<string>('dark');
@@ -24,3 +24,30 @@ const AppContext = () => {
 }
 
 export default AppContext
+
+
+const ParentComp = ({children} : {children: React.ReactNode}) => {
+    const context = useContext(ThemeContext);
+  return (
+    <Card>
+        <CardContent className={
+            twMerge(context == 'dark' ? 'bg-gray-950 text-white': 'bg-white text-black', 
+                'rounded-md shadow-md p-2'
+            )
+        }>{children}</CardContent>
+    </Card>
+  )
+}
+
+
+const ChildLevel1 = () => {
+    const context = useContext(ThemeContext);
+  return (
+    <div>
+      <p>Demonstrates context api with shared value.</p>
+      <p>Current Theem Active: 
+        <span className='underline ml-4 uppercase font-bold'>{context}</span>
+      </p>
+    </div>
+  )
+}
