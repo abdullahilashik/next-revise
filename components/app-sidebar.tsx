@@ -58,6 +58,10 @@ const items = [
     {
       title: 'Use Context',
       url: '/app-context'
+    },
+    {
+      title: 'Form Wizard',
+      url: '/multi-step'
     }
   ];
 

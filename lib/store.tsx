@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 import { useSelector } from 'react-redux'
 import { TypedUseSelectorHook, useDispatch } from 'react-redux'
 import counterReducer from '@/lib/features/couter/counterSlice';
+import multipageReducer from '@/lib/features/mutlipage/multiPageSlice';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      counter: counterReducer
+      counter: counterReducer,
+      wizard: multipageReducer
     },
   })
 }
