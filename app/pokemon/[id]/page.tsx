@@ -25,7 +25,7 @@ const PokemonByIdPage = () => {
                     <div className='bg-destructive/10 text-destructive my-4 p-2 rounded shadow font-bold inline-flex gap-4 w-full'>
                         <span>Error!</span>
                         <span className="font-medium">
-                            {error?.error}
+                            {isError && 'Failed to fetch pokemon'}
                         </span>
                     </div>
                 )
