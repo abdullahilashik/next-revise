@@ -49,7 +49,7 @@ const PokemonByIdPage = () => {
                             </thead>
                             <tbody>
                                 {
-                                    data && data.game_indices.map((indice) => (
+                                    data && data.game_indices.map((indice : any) => (
                                         <tr key={indice.game_index + indice.version.name} className='border'>
                                             <td className='border border-gray-200 p-2'>{indice.game_index}</td>
                                             <td className='border border-gray-200 p-2'>{indice.version.name}</td>
@@ -76,7 +76,7 @@ const PokemonByIdPage = () => {
                             </thead>
                             <tbody>
                                 {
-                                    data && data.stats.map((stat, index) => (
+                                    data && data.stats.map((stat : any, index : number) => (
                                         <tr key={index} className='border'>
                                             <td className='border border-gray-200 p-2'>{stat.stat.name}</td>
                                             <td className='border border-gray-200 p-2'>{stat.base_stat}</td>
@@ -103,7 +103,7 @@ const PokemonByIdPage = () => {
                             </thead>
                             <tbody>
                                 {
-                                    data && data.types.map((type, index) => (
+                                    data && data.types.map((type: {type: any, slot: number}, index: number) => (
                                         <tr key={index} className='border'>
                                             <td className='border border-gray-200 p-2'>{type.type.name}</td>
                                             <td className='border border-gray-200 p-2'>{type.slot}</td>                                            
