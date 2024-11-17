@@ -2,8 +2,6 @@
 
 import AccountInformationForm from '@/components/form-wizard/account-information'
 import PersonalInformaitonForm from '@/components/form-wizard/personal-information'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { selectActiveTab, selectSteps, updateSelectedTab } from '@/lib/features/mutlipage/multiPageSlice'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'

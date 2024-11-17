@@ -62,6 +62,10 @@ const items = [
     {
       title: 'Form Wizard',
       url: '/multi-step'
+    },
+    {
+      title: 'Pokemon RTK Query',
+      url: '/pokemon'
     }
   ];
 
