@@ -1,6 +1,9 @@
 "use client"
 
 import AccountInformationForm from '@/components/form-wizard/account-information'
+import BillingForm from '@/components/form-wizard/billing-form'
+import ExperienceInformation from '@/components/form-wizard/experience-information'
+import FinishFormPreview from '@/components/form-wizard/finish-tab'
 import PersonalInformaitonForm from '@/components/form-wizard/personal-information'
 import { selectActiveTab, selectSteps, updateSelectedTab } from '@/lib/features/mutlipage/multiPageSlice'
 import React, { useState } from 'react'
@@ -33,7 +36,7 @@ const MultiStepFormPage = () => {
                     <div className="flex items-start flex-col gap-y-4">
                         {
                             steps.map((step : any)=> (
-                                <div key={step.id} className={`flex gap-4 hover:bg-blue-400 p-4 w-full duration-200 cursor-pointer`} onClick={() => handleSelectedTab(step.id)}>
+                                <div key={step.id} className={`flex gap-4 hover:bg-blue-400 p-4 w-full duration-200 cursor-pointer`}>
                                     <span className={
                                         `
                                             w-12 text-2xl h-12 aspect-square 
@@ -55,6 +58,9 @@ const MultiStepFormPage = () => {
                 <div className='px-4 w-full'>
                     {selectedTab == 1 && <PersonalInformaitonForm />}
                     {selectedTab == 2 && <AccountInformationForm />}
+                    {selectedTab == 3 && <ExperienceInformation />}
+                    {selectedTab == 4 && <BillingForm />}
+                    {selectedTab == 5 && <FinishFormPreview />}
                 </div>
             </div>
         </div>

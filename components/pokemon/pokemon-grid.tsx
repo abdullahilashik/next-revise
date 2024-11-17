@@ -8,7 +8,7 @@ import { Button } from '../ui/button';
 const PokemonGrid = () => {
     const [offset, setOffset] = useState<number>(0);
     const [limit, setLimit] = useState<number>(20);
-    const {data: pokemons, isLoading, isFetching} = useGetPokemonsQuery({offset,limit});
+    const {data: pokemons, isLoading, isFetching} = useGetPokemonsQuery({offset,limit});    
         
   return (
     <>

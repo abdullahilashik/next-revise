@@ -15,23 +15,28 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useDispatch } from "react-redux";
-import { nextActiveTab, updateSelectedTab } from "@/lib/features/mutlipage/multiPageSlice";
+import { nextActiveTab, selectPersonalInfo, updatePersonalInfo, updateSelectedTab } from "@/lib/features/mutlipage/multiPageSlice";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { ArrowRight } from "lucide-react";
+import { useSelector } from "react-redux";
+import SubmitButton from "./submit-button";
 
 const PersonalInformaitonForm = () => {
   const dispatch = useDispatch();
+  const personalInfo = useSelector(selectPersonalInfo);
+  
   const form = useForm<z.infer<typeof PersonalInformationSchema>>({
     resolver: zodResolver(PersonalInformationSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      website: "",
+      name: personalInfo.name || '',
+      email: personalInfo.email || '',
+      website: personalInfo.website || '',
     },
   });
   const handleFormSubmit = (
     values: z.infer<typeof PersonalInformationSchema>
-  ) => {    
+  ) => {        
+    dispatch(updatePersonalInfo({...values}));    
     dispatch(updateSelectedTab({id: 2}));
   };
   return (
@@ -89,13 +94,7 @@ const PersonalInformaitonForm = () => {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                className="ml-auto inline-flex gap-1 items-center"
-              >
-                <span>Next Page</span>
-                <ArrowRight />
-              </Button>
+              <SubmitButton hasPrevious={false} />
             </form>
           </Form>
         </CardContent>

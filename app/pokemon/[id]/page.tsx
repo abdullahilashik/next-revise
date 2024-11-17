@@ -1,6 +1,7 @@
 "use client"
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { useGetPokemonByNameQuery } from '@/lib/features/pokemon/pokemon-api-slice';
+import { useCreatePokemonMutation, useGetPokemonByNameQuery } from '@/lib/features/pokemon/pokemon-api-slice';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react'
@@ -8,7 +9,7 @@ import React, { useEffect } from 'react'
 const PokemonByIdPage = () => {
     const params = useParams();        
     const {data, isError, error, isFetching} = useGetPokemonByNameQuery({name: params.id});
-    console.log('Pokemon: ', data);
+    const [createPokemon, {isLoading: isPokemonLoading, isUninitialized: isPokemonUninitialized, isError: isPokemonError}] = useCreatePokemonMutation();
 
     if(isFetching){
         return <section>
@@ -18,8 +19,19 @@ const PokemonByIdPage = () => {
         </section>
     }
   return (
-    <section>
+    <section>        
+        
         <div className="container">
+            <div className="mt-3 flex gap-4 items-center">
+                <Button onClick={()=>{
+                    createPokemon({});
+                }}>
+                    {isPokemonLoading ? 'Loading...': 'Create pokemon'}
+                </Button>
+                {
+                    isPokemonError && <span className='text-red-600'>Error creating new pokemon</span>
+                }
+            </div>
             {
                 isError && (
                     <div className='bg-destructive/10 text-destructive my-4 p-2 rounded shadow font-bold inline-flex gap-4 w-full'>

@@ -14,30 +14,30 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useDispatch } from "react-redux";
-import { nextActiveTab, updateSelectedTab } from "@/lib/features/mutlipage/multiPageSlice";
+import { nextActiveTab, selectAccountInfo, updateAccountInfo, updateSelectedTab } from "@/lib/features/mutlipage/multiPageSlice";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AccountInformationSchema } from "@/schema/account-information-schema";
+import { useSelector } from "react-redux";
+import SubmitButton from "./submit-button";
 
 const AccountInformationForm = () => {
   const dispatch = useDispatch();
+  const accountInfo = useSelector(selectAccountInfo);
   const form = useForm<z.infer<typeof AccountInformationSchema>>({
     resolver: zodResolver(AccountInformationSchema),
     defaultValues: {
-      bank: "",
-      phone: "",
+      bank: accountInfo.bank || '',
+      phone: accountInfo.phone || '',
     },
   });
   const handleFormSubmit = (
     values: z.infer<typeof AccountInformationSchema>
-  ) => {
-    console.log("Values: ", values);
-    dispatch(nextActiveTab());
-  };
-
-  const handlePreviousStep = () => {
-    dispatch(updateSelectedTab({id: 1}))
-  }
+  ) => {    
+    console.log('Handle account info submit: ', values);
+    dispatch(updateAccountInfo({...values}));
+    dispatch(nextActiveTab());    
+  };  
 
   return (
     <>
@@ -85,23 +85,7 @@ const AccountInformationForm = () => {
                   </FormItem>
                 )}
               />
-              <div className="flex items-center justify-between">
-                <Button
-                    onClick={handlePreviousStep}
-                  type="submit"
-                  className="inline-flex gap-1 items-center"
-                >
-                  <ArrowLeft />
-                  <span>Previous Page</span>
-                </Button>
-                <Button
-                  type="submit"
-                  className="inline-flex gap-1 items-center"
-                >
-                  <span>Next Page</span>
-                  <ArrowRight />
-                </Button>
-              </div>
+              <SubmitButton hasPrevious={true}/>
             </form>
           </Form>
         </CardContent>
